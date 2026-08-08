@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sete Sóis | Selo Musical e Produtora Cultural</title>
+    <meta name="description" content="Sete Sóis — selo independente de música brasileira e produtora de projetos culturais. Fundado em 2004, com mais de 70 álbuns lançados.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: #111111;
+            background: #FFFFFF;
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: inherit; text-decoration: none; }
+        a.artist-card { color: inherit; text-decoration: none; display: block; }
+        ul { list-style: none; }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #FFFFFF;
+            border-bottom: 1px solid #E0E0E0;
+            height: 72px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo { height: 40px; width: auto; }
+        .nav-links { display: flex; align-items: center; gap: 28px; }
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #111111;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #3A6FD8; }
+        .nav-social { display: flex; align-items: center; gap: 16px; }
+        .nav-social a {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid #E0E0E0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #333333;
+            transition: all 0.3s;
+        }
+        .nav-social a:hover { border-color: #3A6FD8; color: #3A6FD8; }
+        .nav-mobile-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-mobile-btn span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #111111;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #5B8DEF;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('imagens/hero-bg.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 1;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(91,141,239,0) 0%, rgba(91,141,239,0.15) 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 32px;
+            padding-top: 72px;
+        }
+        .hero-logo {
+            height: 80px;
+            width: auto;
+            margin: 0 auto 32px;
+            display: block;
+        }
+        .hero-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #111111;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(32px, 6vw, 72px);
+            font-weight: 900;
+            color: #FFFFFF;
+            line-height: 1.05;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+        .hero h1 span { color: #FFFFFF; font-weight: 900; }
+        .hero p {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #111111;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 64px;
+            margin-top: 56px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.25);
+        }
+        .hero-stat-num {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: #FFFFFF;
+            line-height: 1;
+        }
+        .hero-stat-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: #111111;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 8px;
+        }
+
+        /* ===== SECTION COMMON ===== */
+        .section { padding: 100px 0; }
+        .section-blue { background: #5B8DEF; color: #FFFFFF; }
+        .section-white { background: #FFFFFF; color: #111111; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+        .section-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #3A6FD8;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .section-blue .section-label { color: rgba(255,255,255,0.7); }
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(26px, 4vw, 44px);
+            font-weight: 800;
+            color: #111111;
+            line-height: 1.15;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+        .section-blue .section-title { color: #FFFFFF; }
+        .section-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555555;
+            max-width: 640px;
+        }
+        .section-blue .section-sub { color: rgba(255,255,255,0.8); }
+
+        /* ===== INTRO SPLIT ===== */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 500px;
+            margin-top: 48px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .intro-img {
+            background-image: url('imagens/flavvio_alves_foto.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+        }
+        .intro-text {
+            background: #5B8DEF;
+            padding: 56px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .intro-text h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .intro-text h3 span { color: #FFFFFF; }
+        .intro-text p {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 12px;
+        }
+
+        /* ===== SERVICES GRID ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            margin-top: 48px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .service-card {
+            padding: 48px 32px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.2);
+            transition: background 0.3s;
+        }
+        .service-card:last-child { border-right: none; }
+        .service-card:hover { background: rgba(255,255,255,0.1); }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 20px;
+            border: 2px solid #FFFFFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #FFFFFF;
+        }
+        .service-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+        .service-card p { font-family: 'Inter', sans-serif; font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.7; }
+
+        /* ===== PROJECTS ===== */
+        .projects-header { text-align: center; margin-bottom: 56px; }
+        .projects-header .section-sub { margin: 0 auto; }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .project-card {
+            background: #FFFFFF;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #E0E0E0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+        }
+        .project-img {
+            height: 220px;
+            background: #E8E8E8;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .project-card:hover .project-img img { opacity: 1; transform: scale(1.03); }
+        .project-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #3A6FD8;
+            color: #FFFFFF;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 2px;
+        }
+        .project-body { padding: 24px; }
+        .project-artist {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #3A6FD8;
+            margin-bottom: 6px;
+        }
+        .project-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        .project-desc { font-family: 'Inter', sans-serif; font-size: 14px; color: #555555; line-height: 1.7; margin-bottom: 16px; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .tag {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border: 1px solid #E0E0E0;
+            border-radius: 2px;
+            color: #555555;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ===== ARTISTS ===== */
+        .artists-intro {
+            color: rgba(255,255,255,0.8);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 640px;
+            margin-bottom: 48px;
+        }
+        .artists-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .artist-card {
+            padding: 32px 20px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .artist-card:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.35);
+        }
+        .artist-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .artist-role {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4px;
+        }
+
+        /* ===== PARTNERSHIPS ===== */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            margin-top: 48px;
+            align-items: start;
+        }
+        .partners-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid #E0E0E0;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #333333;
+        }
+        .partners-list li:last-child { border-bottom: none; }
+        .partner-dot {
+            flex-shrink: 0;
+            width: 8px;
+            height: 8px;
+            background: #3A6FD8;
+            border-radius: 50%;
+            margin-top: 8px;
+        }
+        .partner-name { font-weight: 700; color: #111111; }
+
+        /* ===== CTA BOX ===== */
+        .cta-box {
+            background: #3A6FD8;
+            border-radius: 4px;
+            padding: 56px 48px;
+        }
+        .cta-box h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+        .cta-box p {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.85);
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+        .btn {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 14px 32px;
+            border-radius: 2px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn-white {
+            background: #FFFFFF;
+            color: #3A6FD8;
+            border: 2px solid #FFFFFF;
+        }
+        .btn-white:hover { background: transparent; color: #FFFFFF; }
+        .btn-ghost {
+            background: transparent;
+            color: #FFFFFF;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .btn-ghost:hover { border-color: #FFFFFF; }
+        .btn-outline {
+            background: transparent;
+            color: #111111;
+            border: 2px solid #111111;
+        }
+        .btn-outline:hover { background: #111111; color: #FFFFFF; }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 56px 0;
+            background: #0D1B2A;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .footer-logo { height: 32px; opacity: 0.5; }
+        .footer-info {
+            text-align: right;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.8;
+        }
+        .footer-info strong { color: rgba(255,255,255,0.6); font-weight: 600; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 960px) {
+            .intro-grid { grid-template-columns: 1fr; }
+            .intro-img { min-height: 280px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .service-card { border-bottom: 1px solid rgba(255,255,255,0.2); }
+            .service-card:nth-child(2) { border-right: none; }
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .artists-grid { grid-template-columns: repeat(3, 1fr); }
+            .partners-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .nav-mobile-btn { display: flex; }
+        }
+        @media (max-width: 640px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { border-right: none !important; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .artists-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-stats { gap: 32px; flex-wrap: wrap; }
+            .hero-stat-num { font-size: 36px; }
+            .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+            .footer-info { text-align: center; }
+            .cta-box { padding: 40px 28px; }
+            .intro-text { padding: 40px 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#"><img src="imagens/logo_sete_sois_1.png" alt="Sete Sóis" class="nav-logo"></a>
+            <div class="nav-links">
+                <a href="#sobre" class="active">Sobre</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#artistas">Artistas</a>
+                <a href="#parcerias">Parcerias</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <div class="nav-social">
+                <a href="#" aria-label="Instagram" target="_blank">IG</a>
+                <a href="#" aria-label="Spotify" target="_blank">SP</a>
+                <a href="#" aria-label="YouTube" target="_blank">YT</a>
+            </div>
+            <button class="nav-mobile-btn" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="imagens/logo_sete_sois_1.png" alt="Sete Sóis" class="hero-logo">
+            <div class="hero-label">Selo Musical e Produtora Cultural</div>
+            <h1>Irradiando <span>música brasileira</span></h1>
+            <p>A Sete Sóis atua desde 2004 na produção musical e gestão de projetos culturais, com foco na excelência artística e na valorização da música brasileira.</p>
+            <div class="hero-stats">
+                <div>
+                    <div class="hero-stat-num">20</div>
+                    <div class="hero-stat-label">Anos de atuação</div>
+                </div>
+                <div>
+                    <div class="hero-stat-num">70+</div>
+                    <div class="hero-stat-label">Álbuns lançados</div>
+                </div>
+                <div>
+                    <div class="hero-stat-num">12</div>
+                    <div class="hero-stat-label">Artistas no catálogo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="section section-white" id="sobre">
+        <div class="container">
+            <span class="section-label">Sobre</span>
+            <h2 class="section-title">Selo independente com atuação consolidada em projetos culturais</h2>
+            <div class="intro-grid">
+                <div class="intro-img"></div>
+                <div class="intro-text">
+                    <h3>Fundada em <span>2004</span></h3>
+                    <p>A <strong>Sete Sóis Produções Artísticas Ltda.</strong> é um selo musical independente e produtora cultural sob direção do poeta, compositor e produtor <strong>Flávvio Alves Costa</strong>, um dos fundadores do selo.</p>
+                    <p>Ao longo de duas décadas, a Sete Sóis lançou mais de 70 álbuns e desenvolveu centenas de shows e projetos culturais. Obras do catálogo já foram gravadas por artistas como Ceumar, Renato Braz, Zeca Baleiro, Fred Martins e Rubi.</p>
+                    <p>A distribuição digital dos lançamentos é realizada pela <strong>Tratore</strong>, com presença em todas as plataformas de streaming.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="section section-blue" id="servicos">
+        <div class="container">
+            <span class="section-label">Serviços</span>
+            <h2 class="section-title">Atuação integral em música e cultura</h2>
+            <p class="section-sub">Da concepção criativa à entrega final, a Sete Sóis oferece estrutura completa para projetos musicais e culturais.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">♪</div>
+                    <h4>Produção Musical</h4>
+                    <p>Coordenação de gravações, arranjos, mixagem e masterização com parceiros como o Estúdio Canto da Coruja.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✎</div>
+                    <h4>Gestão de Projetos</h4>
+                    <p>Elaboração de projetos para editais e patrocínios, com histórico de aprovações em órgãos de fomento.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">☆</div>
+                    <h4>Selo Discográfico</h4>
+                    <p>Concepção, edição e lançamento de álbuns com distribuição Tratore em todas as plataformas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">◆</div>
+                    <h4>Produção de Eventos</h4>
+                    <p>Realização de shows, lançamentos e eventos culturais com estrutura técnica completa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section class="section section-white" id="projetos">
+        <div class="container">
+            <div class="projects-header">
+                <span class="section-label">Projetos</span>
+                <h2 class="section-title">Trabalhos com parceiros estratégicos</h2>
+                <p class="section-sub">Uma seleção de projetos desenvolvidos em parceria com artistas, instituições e órgãos de fomento.</p>
+            </div>
+            <div class="projects-grid">
+
+                <!-- Fred Martins - Tempo Afora -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="imagens/tempo_afora.jpg" alt="Projeto Tempo Afora">
+                        <span class="project-badge">Canal Brasil / Globosat</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-artist">Fred Martins</div>
+                        <h3 class="project-title">Tempo Afora — CD &amp; DVD</h3>
+                        <p class="project-desc">Especial de TV gravado para o Canal Brasil/Globosat e lançado em CD e DVD. Contou com a participação de Ney Matogrosso e excelente recepção da crítica especializada.</p>
+                        <div class="project-tags">
+                            <span class="tag">Canal Brasil</span>
+                            <span class="tag">Globosat</span>
+                            <span class="tag">DVD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fred Martins - A Música é Meu País -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="imagens/a_musica_e_meu_pais.jpg" alt="Projeto A Música é Meu País">
+                        <span class="project-badge">Canal Brasil</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-artist">Fred Martins</div>
+                        <h3 class="project-title">A Música é Meu País — DVD</h3>
+                        <p class="project-desc">DVD gravado ao vivo no Teatro da UFF (Niterói) com parceria do Canal Brasil e produção da Calabouço Filmes. Canções marcantes com participações especiais, incluindo Zélia Duncan.</p>
+                        <div class="project-tags">
+                            <span class="tag">Canal Brasil</span>
+                            <span class="tag">Calabouço Filmes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fred Martins - Para Além do Muro -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="imagens/para_alem_do_muro_do_meu_quintal.jpg" alt="Projeto Para Além do Muro do Meu Quintal">
+                        <span class="project-badge">Sete Sóis</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-artist">Fred Martins</div>
+                        <h3 class="project-title">Para Além do Muro do Meu Quintal — CD</h3>
+                        <p class="project-desc">Álbum lançado pelo selo Sete Sóis com distribuição Tratore, com canções que retratam a musicalidade brasileira. Gravado em Portugal com lançamento simultâneo no Brasil e Europa.</p>
+                        <div class="project-tags">
+                            <span class="tag">Sete Sóis</span>
+                            <span class="tag">Tratore</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rubi - Infinito Portátil -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="imagens/infinito_portatil.jpg" alt="Projeto Infinito Portátil">
+                        <span class="project-badge">Sete Sóis</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-artist">Rubi</div>
+                        <h3 class="project-title">Infinito Portátil — CD</h3>
+                        <p class="project-desc">Disco conceitual lançado pelo selo Sete Sóis, com design arrojado em estojo redondo de madeira embuia. Projeto semi-artesanal que privilegia a voz e a instrumentação.</p>
+                        <div class="project-tags">
+                            <span class="tag">Artesanal</span>
+                            <span class="tag">Sete Sóis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rubi - Paisagem Humana -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="imagens/paisagem_humana.jpg" alt="Projeto Paisagem Humana">
+                        <span class="project-badge">Petrobras / Eldorado</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-artist">Rubi</div>
+                        <h3 class="project-title">Paisagem Humana — CD</h3>
+                        <p class="project-desc">Co-produção entre Petrobras, Eldorado e Sete Sóis. O disco foi selecionado no programa <strong>Rumos Itaú Cultural 2008</strong>. Rubi é reconhecido com 3º lugar no Prêmio Visa MPB.</p>
+                        <div class="project-tags">
+                            <span class="tag">Petrobras</span>
+                            <span class="tag">Eldorado</span>
+                            <span class="tag">Rumos Itaú Cultural</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flávvio & Kléber - Cantigas -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="imagens/cantigas_de_nao_chegar.jpg" alt="Projeto Cantigas de Não Chegar">
+                        <span class="project-badge">Sete Sóis / Tratore</span>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-artist">Flávvio Alves &amp; Kléber Albuquerque</div>
+                        <h3 class="project-title">Cantigas de Não Chegar — Álbum</h3>
+                        <p class="project-desc">Álbum que conclui projeto iniciado em 2016 no Caminho de Santiago. Sonoridade folk com influências de Antônio Marcos a Jethro Tull, lançado com distribuição Tratore.</p>
+                        <div class="project-tags">
+                            <span class="tag">Sete Sóis</span>
+                            <span class="tag">Tratore</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTISTAS -->
+    <section class="section section-blue" id="artistas">
+        <div class="container">
+            <span class="section-label">Catálogo</span>
+            <h2 class="section-title">Artistas com quem trabalhamos</h2>
+            <p class="artists-intro">
+                O catálogo da Sete Sóis reúne artistas da música brasileira de reconhecimento crítico e público, com obras gravadas e distribuídas nacionalmente.
+            </p>
+            <div class="artists-grid">
+                <div class="artist-card"><div class="artist-name">Fred Martins</div><div class="artist-role">Compositor e intérprete</div></div>
+                <div class="artist-card"><div class="artist-name">Rubi</div><div class="artist-role">Cantor e compositor</div></div>
+                <a href="https://www.kleberalbuquerque.com.br" target="_blank" class="artist-card" style="cursor:pointer;"><div class="artist-name">Kléber Albuquerque</div><div class="artist-role">Compositor e produtor</div></a>
+                <a href="https://flavvioalves.com.br" target="_blank" class="artist-card" style="cursor:pointer;"><div class="artist-name">Flávvio Alves</div><div class="artist-role">Poeta e compositor</div></a>
+                <div class="artist-card"><div class="artist-name">Ceumar</div><div class="artist-role">Cantora e compositora</div></div>
+                <div class="artist-card"><div class="artist-name">Zeca Baleiro</div><div class="artist-role">Cantor e compositor</div></div>
+                <div class="artist-card"><div class="artist-name">Renato Braz</div><div class="artist-role">Cantor e compositor</div></div>
+                <div class="artist-card"><div class="artist-name">Daniel Groove</div><div class="artist-role">Cantor e compositor</div></div>
+                <div class="artist-card"><div class="artist-name">Elaine Frere</div><div class="artist-role">Cantora</div></div>
+                <div class="artist-card"><div class="artist-name">Tom Nascimento</div><div class="artist-role">Cantor e compositor</div></div>
+                <div class="artist-card"><div class="artist-name">Izza</div><div class="artist-role">Cantora e compositora</div></div>
+                <div class="artist-card"><div class="artist-name">Aparecido da Silva</div><div class="artist-role">Cantor e compositor</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARCERIAS -->
+    <section class="section section-white" id="parcerias">
+        <div class="container">
+            <span class="section-label">Parcerias &amp; Fomento</span>
+            <h2 class="section-title">Histórico de parcerias institucionais</h2>
+            <div class="partners-grid">
+                <ul class="partners-list">
+                    <li>
+                        <div class="partner-dot"></div>
+                        <div><span class="partner-name">Petrobras Cultural</span> — Co-produção do CD <em>Paisagem Humana</em> (Rubi), projeto contemplado pelo programa de fomento da Petrobras.</div>
+                    </li>
+                    <li>
+                        <div class="partner-dot"></div>
+                        <div><span class="partner-name">Canal Brasil / Globosat</span> — Co-produção de especiais de TV e DVDs: <em>Tempo Afora</em> e <em>A Música é Meu País</em> (Fred Martins).</div>
+                    </li>
+                    <li>
+                        <div class="partner-dot"></div>
+                        <div><span class="partner-name">Eldorado</span> — Parceria em projetos discográficos, combinando produção musical e distribuição.</div>
+                    </li>
+                    <li>
+                        <div class="partner-dot"></div>
+                        <div><span class="partner-name">Rumos Itaú Cultural</span> — Projeto selecionado em edição nacional de fomento à produção cultural.</div>
+                    </li>
+                    <li>
+                        <div class="partner-dot"></div>
+                        <div><span class="partner-name">Funarte / Caixa Cultural / SESC</span> — Projetos aprovados em editais de ocupação de espaços e produção musical.</div>
+                    </li>
+                    <li>
+                        <div class="partner-dot"></div>
+                        <div><span class="partner-name">Tratore</span> — Distribuição digital em todas as plataformas de streaming para os lançamentos do selo.</div>
+                    </li>
+                </ul>
+                <div class="cta-box" id="contato">
+                    <h3>Proponha um projeto cultural</h3>
+                    <p>A Sete Sóis está aberta a novas parcerias com artistas, instituições e órgãos de fomento. Oferecemos estrutura completa para captação, produção e execução de projetos culturais.</p>
+                    <p style="font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 24px;">
+                        </p>
+                    <a href="#" class="btn btn-white">Entre em contato</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <img src="imagens/logo-sete-sois-transparencia.png" alt="Sete Sóis" class="footer-logo">
+            <div class="footer-info">
+                <strong>Sete Sóis Produções Artísticas Ltda.</strong><br>
+                CNPJ 01.987.135/0001-55<br>
+                &copy; 2026 Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+</body>
+<script src="https://kaagenciacriativa.vercel.app/widget.js" data-client-id="sete-sois" defer></script>
+</html>
